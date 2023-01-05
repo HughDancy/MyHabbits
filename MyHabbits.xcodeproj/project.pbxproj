@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		D8FBCCA329667E8A00E2BDDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCA229667E8A00E2BDDE /* AppDelegate.swift */; };
 		D8FBCCA529667E8A00E2BDDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCA429667E8A00E2BDDE /* SceneDelegate.swift */; };
-		D8FBCCA729667E8A00E2BDDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCA629667E8A00E2BDDE /* ViewController.swift */; };
 		D8FBCCAC29667E8C00E2BDDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8FBCCAB29667E8C00E2BDDE /* Assets.xcassets */; };
 		D8FBCCAF29667E8C00E2BDDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FBCCAD29667E8C00E2BDDE /* LaunchScreen.storyboard */; };
 		D8FBCCB729667F1D00E2BDDE /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCB629667F1D00E2BDDE /* HabitsStore.swift */; };
 		D8FBCCB92966835C00E2BDDE /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCB82966835C00E2BDDE /* InformationViewController.swift */; };
+		D8FBCCBB2966857100E2BDDE /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCBA2966857100E2BDDE /* HabitsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D8FBCC9F29667E8A00E2BDDE /* MyHabbits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabbits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FBCCA229667E8A00E2BDDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8FBCCA429667E8A00E2BDDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D8FBCCA629667E8A00E2BDDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D8FBCCAB29667E8C00E2BDDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8FBCCAE29667E8C00E2BDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8FBCCB029667E8C00E2BDDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8FBCCB629667F1D00E2BDDE /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		D8FBCCB82966835C00E2BDDE /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		D8FBCCBA2966857100E2BDDE /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +60,12 @@
 			children = (
 				D8FBCCA229667E8A00E2BDDE /* AppDelegate.swift */,
 				D8FBCCA429667E8A00E2BDDE /* SceneDelegate.swift */,
-				D8FBCCA629667E8A00E2BDDE /* ViewController.swift */,
 				D8FBCCAB29667E8C00E2BDDE /* Assets.xcassets */,
 				D8FBCCAD29667E8C00E2BDDE /* LaunchScreen.storyboard */,
 				D8FBCCB029667E8C00E2BDDE /* Info.plist */,
 				D8FBCCB629667F1D00E2BDDE /* HabitsStore.swift */,
 				D8FBCCB82966835C00E2BDDE /* InformationViewController.swift */,
+				D8FBCCBA2966857100E2BDDE /* HabitsViewController.swift */,
 			);
 			path = MyHabbits;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8FBCCB729667F1D00E2BDDE /* HabitsStore.swift in Sources */,
-				D8FBCCA729667E8A00E2BDDE /* ViewController.swift in Sources */,
+				D8FBCCBB2966857100E2BDDE /* HabitsViewController.swift in Sources */,
 				D8FBCCA329667E8A00E2BDDE /* AppDelegate.swift in Sources */,
 				D8FBCCA529667E8A00E2BDDE /* SceneDelegate.swift in Sources */,
 				D8FBCCB92966835C00E2BDDE /* InformationViewController.swift in Sources */,

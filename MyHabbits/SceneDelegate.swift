@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.tintColor = .purple
         
-        let firstViewController = ViewController()
+        let firstViewController = HabitsViewController()
         let firstNavigationController = UINavigationController(rootViewController: firstViewController)
         firstViewController.tabBarItem = UITabBarItem(title: "Привычки", image: UIImage(systemName: "rectangle.split.1x2.fill"), tag: 0)
         

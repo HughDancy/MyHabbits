@@ -1,5 +1,5 @@
 //
-//  InformationViewController.swift
+//  HabitsViewController.swift
 //  MyHabbits
 //
 //  Created by Борис Киселев on 05.01.2023.
@@ -7,24 +7,29 @@
 
 import UIKit
 
-class InformationViewController: UIViewController {
+class HabitsViewController: UIViewController {
     
+    //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.tabBarController?.navigationItem.largeTitleDisplayMode = .always
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem?.tintColor = .purple
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemGray6
+        appearance.backgroundColor = .white
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
-        title = "Информация"
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemMint
+        title = "Сегодня"
+    
     }
     
 
@@ -37,5 +42,11 @@ class InformationViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Button's Action
+    
+    @objc func addTapped() {
+        print("Aloha!")
+    }
 
 }
