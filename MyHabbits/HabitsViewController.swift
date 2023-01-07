@@ -46,7 +46,9 @@ class HabitsViewController: UIViewController {
     //MARK: - Button's Action
     
     @objc func addTapped() {
-        print("Aloha!")
+        let vc = UINavigationController(rootViewController: HabitViewController())
+        vc.modalPresentationStyle = .fullScreen
+        navigationController?.present(vc, animated: true)
     }
 
 }
