@@ -9,6 +9,29 @@ import UIKit
 
 class InformationViewController: UIViewController {
     
+    //MARK: - Subview's
+    
+    private lazy var headingTitle: UILabel = {
+       let title = UILabel()
+        title.text = infoTitle
+        title.font = UIFont(name: "HelveticaNeue-Bold", size: HabitFontSize.infoTitleSize.rawValue)
+        title.textColor = .black
+        
+        return title
+    }()
+    
+    private lazy var infoTextView: UITextView = {
+       let textView = UITextView()
+        textView.textColor = .black
+        textView.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.headlineSize.rawValue)
+        textView.text = infoText
+        textView.showsVerticalScrollIndicator = false
+        
+        return textView
+    }()
+    
+    //MARK: - Lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -21,21 +44,31 @@ class InformationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         title = "Информация"
-
-        // Do any additional setup after loading the view.
+        setupHierarchy()
+        setupLayout()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Setup Hierarchy
+    
+    private func setupHierarchy() {
+        view.addSubview(headingTitle)
+        view.addSubview(infoTextView)
     }
-    */
 
+    //MARK: - Setup Layout
+    
+    private func setupLayout() {
+        
+        headingTitle.translatesAutoresizingMaskIntoConstraints = false
+        headingTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        headingTitle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        
+        infoTextView.translatesAutoresizingMaskIntoConstraints = false
+        infoTextView.topAnchor.constraint(equalTo: headingTitle.bottomAnchor, constant: 15).isActive = true
+        infoTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        infoTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        infoTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
 }

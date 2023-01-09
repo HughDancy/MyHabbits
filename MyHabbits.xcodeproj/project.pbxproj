@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8693A7D296BFCF2002AA0DE /* HabitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8693A7C296BFCF2002AA0DE /* HabitConstants.swift */; };
 		D8FBCCA329667E8A00E2BDDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCA229667E8A00E2BDDE /* AppDelegate.swift */; };
 		D8FBCCA529667E8A00E2BDDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCA429667E8A00E2BDDE /* SceneDelegate.swift */; };
 		D8FBCCAC29667E8C00E2BDDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8FBCCAB29667E8C00E2BDDE /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D8693A7C296BFCF2002AA0DE /* HabitConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitConstants.swift; sourceTree = "<group>"; };
 		D8FBCC9F29667E8A00E2BDDE /* MyHabbits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabbits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FBCCA229667E8A00E2BDDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8FBCCA429667E8A00E2BDDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				D8FBCCB82966835C00E2BDDE /* InformationViewController.swift */,
 				D8FBCCBA2966857100E2BDDE /* HabitsViewController.swift */,
 				D8FBCCBC29668F9300E2BDDE /* HabitViewController.swift */,
+				D8693A7C296BFCF2002AA0DE /* HabitConstants.swift */,
 			);
 			path = MyHabbits;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			files = (
 				D8FBCCB729667F1D00E2BDDE /* HabitsStore.swift in Sources */,
 				D8FBCCBD29668F9300E2BDDE /* HabitViewController.swift in Sources */,
+				D8693A7D296BFCF2002AA0DE /* HabitConstants.swift in Sources */,
 				D8FBCCBB2966857100E2BDDE /* HabitsViewController.swift in Sources */,
 				D8FBCCA329667E8A00E2BDDE /* AppDelegate.swift in Sources */,
 				D8FBCCA529667E8A00E2BDDE /* SceneDelegate.swift in Sources */,
