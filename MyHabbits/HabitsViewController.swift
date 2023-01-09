@@ -11,6 +11,7 @@ class HabitsViewController: UIViewController {
     
     //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
+        print(store.habits[1].name)
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.tabBarController?.navigationItem.largeTitleDisplayMode = .always

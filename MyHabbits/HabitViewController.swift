@@ -9,6 +9,8 @@ import UIKit
 
 class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate {
     
+    var text = ""
+    
     //MARK: - Subview's
     
     private lazy var nameLabel: UILabel = {
@@ -23,6 +25,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
     private lazy var habitField: UITextField = {
        let textField = UITextField()
         textField.placeholder = "Бегать по утрам, спать 8 часов и т.п."
+        textField.addTarget(self, action: #selector(saveText), for: .editingChanged)
         
         return textField
     }()
@@ -67,7 +70,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
        let time = UILabel()
         time.textColor = .purple
         time.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.casualTextSize.rawValue)
-        time.text = "11:00 PM"
+        time.text = formatter(with: timePicker.date)
         
         return time
     }()
@@ -76,6 +79,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
        let timePicker = UIDatePicker()
         timePicker.preferredDatePickerStyle = .wheels
         timePicker.datePickerMode = .time
+        timePicker.addTarget(self, action: #selector(changeTime), for: .valueChanged)
         //TO-DO: - Add date changing function in HERE!!!
         
         
@@ -96,7 +100,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отменить", style: .plain, target: self, action: #selector(getBack))
         navigationItem.leftBarButtonItem?.tintColor = .purple
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(getBack))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(saveHabit))
         navigationItem.rightBarButtonItem?.tintColor = .purple
     }
 
@@ -158,12 +162,31 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         timePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
     }
   
-
     //MARK: - Button's Action's
     
     @objc func getBack() {
         dismiss(animated: true)
         print("get back")
+    }
+    
+    @objc func saveHabit() {
+        if text != "" {
+            let newHabit = Habit(name: text, date: timePicker.date, color: colorButton.tintColor)
+            store.habits.append(newHabit)
+            store.save()
+            dismiss(animated: true)
+        } else {
+            let alert = UIAlertController(title: "Ошибка", message: "Вы не заполнили Название привычки", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ок", style: .cancel))
+            
+            self.present(alert, animated: true)
+        }
+    }
+    
+    @objc func saveText() {
+        if habitField.text != "" {
+            text = habitField.text ?? ""
+        }
     }
     
     @objc func changeColor() {
@@ -175,7 +198,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
     }
     
     @objc func changeTime() {
-       
+        time.text = formatter(with: timePicker.date)
     }
     
     //MARK: - ColorPicker func

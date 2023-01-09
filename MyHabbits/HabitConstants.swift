@@ -34,3 +34,12 @@ let infoText = """
 
 Источник: psychbook.ru
 """
+
+public func formatter(with date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "ru_RU")
+    formatter.timeStyle = .short
+    return formatter.string(from: date)
+}
+
+
