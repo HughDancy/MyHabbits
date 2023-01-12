@@ -80,13 +80,12 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         timePicker.preferredDatePickerStyle = .wheels
         timePicker.datePickerMode = .time
         timePicker.addTarget(self, action: #selector(changeTime), for: .valueChanged)
-        //TO-DO: - Add date changing function in HERE!!!
-        
         
         return timePicker
     }()
     
     //MARK: - Lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

@@ -10,6 +10,7 @@ import UIKit
 class HabitCollectionViewCell: UICollectionViewCell {
     
     let reuseId = "habitCell"
+    let time = ""
     
     //MARK: - Subview's
     
@@ -26,7 +27,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
        let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.casualTextSize.rawValue)
         label.textColor = .lightGray
-        label.text = "Каждый день в \(formatter(with: store.habits[rightIndex].date))"
+        label.text = "Каждый день в \(time)"
         
         return label
     }()
@@ -109,5 +110,20 @@ class HabitCollectionViewCell: UICollectionViewCell {
             checkButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
             (superview as? UICollectionView)?.reloadData()
         }
+    }
+    
+    //MARK: - Setup Date
+    
+    public func setupCell(with index: Int) {
+        habitLabel.text = store.habits[index].name
+        habitLabel.textColor = store.habits[index].color
+        timeLabel.text = "Каждый день в \(formatter(with: store.habits[rightIndex].date))"
+        checkButton.tintColor = store.habits[index].color
+        if store.habits[index].isAlreadyTakenToday == false {
+            store.track(store.habits[index])
+            checkButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            (superview as? UICollectionView)?.reloadData()
+        }
+        
     }
 }

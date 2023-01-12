@@ -20,6 +20,7 @@ class HabitsViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(ProgressCollectionViewCell.self, forCellWithReuseIdentifier: "progressCell")
         collectionView.register(HabitCollectionViewCell.self, forCellWithReuseIdentifier: "habitCell")
+        collectionView.showsVerticalScrollIndicator = false 
         
         return collectionView
     }()
@@ -40,11 +41,13 @@ class HabitsViewController: UIViewController {
         appearance.backgroundColor = .white
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        
+        habitCollectionView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .systemGray6
         title = "Сегодня"
         setupHierarchy()
         setupLayout()
@@ -92,13 +95,14 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: "progressCell", for: indexPath) as! ProgressCollectionViewCell
-            cell.layer.cornerRadius = cell.frame.width / 25
+            cell.layer.cornerRadius = cell.frame.width / 30
             cell.clipsToBounds = true
             
             return cell
         } else {
             let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: "habitCell", for: indexPath) as! HabitCollectionViewCell
-            cell.layer.cornerRadius = cell.frame.width / 25
+            cell.layer.cornerRadius = cell.frame.width / 30
+            cell.setupCell(with: indexPath.row)
             cell.clipsToBounds = true
             return cell
         }
@@ -106,14 +110,10 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth:CGFloat = 100
-        let spacing: CGFloat = 4
-        let columns:CGFloat = ceil(collectionView.bounds.size.width / cellWidth)
-        
-        let wh = ( habitCollectionView.bounds.size.width - ((columns - 1) * spacing) ) / columns
+        let wh = habitCollectionView.bounds.size.width / 5
         let whB = habitCollectionView.bounds.size.height / 4
         
-        return indexPath.section == 0 ? CGSize(width: wh, height: wh) : CGSize(width: habitCollectionView.bounds.size.width - 20, height: whB)
+        return indexPath.section == 0 ? CGSize(width: habitCollectionView.bounds.size.width - 20, height: wh) : CGSize(width: habitCollectionView.bounds.size.width - 20, height: whB)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -123,6 +123,14 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UINavigationController(rootViewController: HabitDetailView())
+        vc.modalPresentationStyle = .fullScreen
+        vc.hidesBottomBarWhenPushed = false
+        rightIndex = indexPath.row
+        present(vc, animated: true)
     }
     
     
