@@ -9,11 +9,11 @@ import UIKit
 
 class ProgressCollectionViewCell: UICollectionViewCell {
     
-    let reuseId = "progressCell"
+   public let reuseId = "progressCell"
     
     //MARK: - Subview's
     
-    private lazy var youDoItLabel: UILabel = {
+    private let youDoItLabel: UILabel = {
         let label = UILabel()
         label.text = "Все получится!"
         label.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.casualTextSize.rawValue)
@@ -22,18 +22,16 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var procentLabel: UILabel = {
+    private let procentLabel: UILabel = {
        let label = UILabel()
-        label.text = String(format: "%.0f%%", store.todayProgress * 100)
         label.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.casualTextSize.rawValue)
         label.textColor = .systemGray
         
         return label
     }()
     
-    private lazy var progressLine: UIProgressView = {
+    private let progressLine: UIProgressView = {
        let progressLine = UIProgressView()
-        progressLine.progress = store.todayProgress
         progressLine.tintColor = .lightGray
         progressLine.progressTintColor = .purple
         progressLine.layer.cornerRadius = 4
@@ -52,6 +50,13 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Setup data
+    
+    func setupData() {
+        procentLabel.text = String(format: "%.0f%%", store.todayProgress * 100)
+        progressLine.progress = store.todayProgress
     }
     
     //MARK: - Setup Hierarchy
@@ -79,6 +84,6 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         progressLine.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         progressLine.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         progressLine.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
-        
+
     }
 }

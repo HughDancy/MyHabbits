@@ -11,14 +11,14 @@ class HabitsViewController: UIViewController {
     
     //MARK: - Subview's
     
-    private lazy var habitCollectionView: UICollectionView = {
+     lazy var habitCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemGray6
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(ProgressCollectionViewCell.self, forCellWithReuseIdentifier: "progressCell")
+         collectionView.register(ProgressCollectionViewCell.self, forCellWithReuseIdentifier: "progressCell")
         collectionView.register(HabitCollectionViewCell.self, forCellWithReuseIdentifier: "habitCell")
         collectionView.showsVerticalScrollIndicator = false 
         
@@ -44,21 +44,19 @@ class HabitsViewController: UIViewController {
         
         habitCollectionView.reloadData()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6
         title = "Сегодня"
         setupHierarchy()
         setupLayout()
-    
     }
-
+    
     //MARK: - Setup Hierarchy
     
     private func setupHierarchy() {
         view.addSubview(habitCollectionView)
-        
     }
     
     //MARK: - Setup Layout
@@ -69,7 +67,6 @@ class HabitsViewController: UIViewController {
         habitCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         habitCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         habitCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-    
     }
     
     //MARK: - Button's Action
@@ -79,8 +76,17 @@ class HabitsViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         navigationController?.present(vc, animated: true)
     }
-
+    
+    @objc func buttonTap(_ sender: UIButton, index: Int) {
+        print(index)
+        if store.habits[index].isAlreadyTakenToday == false {
+            store.track(store.habits[index])
+            sender.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+        }
+    }
 }
+
+    //MARK: - CollectionView extension
 
 extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -95,6 +101,7 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: "progressCell", for: indexPath) as! ProgressCollectionViewCell
+            cell.setupData()
             cell.layer.cornerRadius = cell.frame.width / 30
             cell.clipsToBounds = true
             
@@ -102,7 +109,10 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
         } else {
             let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: "habitCell", for: indexPath) as! HabitCollectionViewCell
             cell.layer.cornerRadius = cell.frame.width / 30
+            cell.cellIndex = indexPath.row
             cell.setupCell(with: indexPath.row)
+            
+            cell.delegate = self
             cell.clipsToBounds = true
             return cell
         }
@@ -126,12 +136,18 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UINavigationController(rootViewController: HabitDetailView())
+        let vc =  HabitDetailView()
         vc.modalPresentationStyle = .fullScreen
         vc.hidesBottomBarWhenPushed = false
-        rightIndex = indexPath.row
-        present(vc, animated: true)
+//        rightIndex = indexPath.row
+        vc.detailIndex = indexPath.row
+        navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+extension HabitsViewController: MyTableViewCellDelegate {
     
-    
+    func didTapButton() {
+        habitCollectionView.reloadData()
+    }
 }

@@ -11,6 +11,10 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
     
     var text = ""
     
+    var index: Int?
+    
+    var backToRootDelegate: BackToRoot?
+    
     //MARK: - Subview's
     
     private lazy var nameLabel: UILabel = {
@@ -84,6 +88,18 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         return timePicker
     }()
     
+    private lazy var deleteButton: UIButton = {
+       let button = UIButton()
+        button.setTitle("Удалить привычку", for: .normal)
+        button.tintColor = .systemRed
+        button.setTitleColor(.red, for: .normal)
+        button.backgroundColor = .white
+        button.isHidden = true
+        button.addTarget(self, action: #selector(deleteButon), for: .touchDown)
+        
+        return button
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +111,12 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
         
-        title = "Создать"
+        if index != nil {
+            title = "Править"
+        } else {
+            title = "Создать"
+        }
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отменить", style: .plain, target: self, action: #selector(getBack))
         navigationItem.leftBarButtonItem?.tintColor = .purple
         
@@ -108,6 +129,18 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         view.backgroundColor = .white
         setupHierarchy()
         setupLayout()
+       
+        if index != nil {
+            deleteButton.isHidden = false
+            habitField.text = store.habits[index ?? 0].name
+            habitField.textColor = .systemBlue
+            colorButton.tintColor = store.habits[index ?? 0].color
+            time.text = formatter(with: store.habits[index ?? 0].date)
+            timePicker.date = store.habits[index ?? 0].date
+        } else {
+            habitField.text = nil
+            colorButton.tintColor = .systemOrange
+        }
     }
     
     //MARK: - Setup Hierarchy
@@ -121,6 +154,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         view.addSubview(habitTime)
         view.addSubview(time)
         view.addSubview(timePicker)
+        view.addSubview(deleteButton)
     }
     
     //MARK: - Setup Layout
@@ -159,13 +193,17 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         timePicker.topAnchor.constraint(equalTo: time.bottomAnchor, constant: 20).isActive = true
         timePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         timePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30).isActive = true
+        deleteButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
+        deleteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
     }
   
     //MARK: - Button's Action's
     
     @objc func getBack() {
         dismiss(animated: true)
-        print("get back")
     }
     
     @objc func saveHabit() {
@@ -177,7 +215,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Вы не заполнили Название привычки", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ок", style: .cancel))
-            
+    
             self.present(alert, animated: true)
         }
     }
@@ -198,6 +236,25 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
     
     @objc func changeTime() {
         time.text = formatter(with: timePicker.date)
+    }
+    
+    @objc func deleteButon() {
+        
+        let alertController = UIAlertController(title: "Удалить привычку?", message: "Вы действительно хотите удалить привычку \(store.habits[index ?? 0].name) ?", preferredStyle: .alert)
+       let noAction = UIAlertAction(title: "Нет", style: .cancel)
+        
+        let delete = UIAlertAction(title: "Удалить", style: .default, handler: { action in
+            store.habits.remove(at: self.index ?? 0)
+            self.backToRootDelegate?.backToRoot()
+            self.dismiss(animated: true)
+        })
+        
+        delete.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        alertController.addAction(noAction)
+        alertController.addAction(delete)
+        
+        present(alertController, animated: true)
     }
     
     //MARK: - ColorPicker func

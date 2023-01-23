@@ -7,9 +7,16 @@
 
 import Foundation
 
+protocol BackToRoot {
+    
+    func backToRoot()
+}
+
 let store = HabitsStore.shared
 
-var rightIndex = 0
+//var rightIndex = 0
+
+//let detailsDay = 1
 
 enum HabitFontSize: CGFloat {
     case headlineSize = 16

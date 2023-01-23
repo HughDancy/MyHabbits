@@ -7,17 +7,23 @@
 
 import UIKit
 
+protocol MyTableViewCellDelegate: AnyObject {
+    func didTapButton()
+}
+
 class HabitCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: MyTableViewCellDelegate?
     
     let reuseId = "habitCell"
     let time = ""
+    var cellIndex = 0
+    var subscribeBtn: (() -> ())?
     
     //MARK: - Subview's
     
-    private lazy var habitLabel: UILabel = {
+    private let habitLabel: UILabel = {
        let label = UILabel()
-        label.text = store.habits[rightIndex].name
-        label.textColor = store.habits[rightIndex].color
         label.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.headlineSize.rawValue)
         
         return label
@@ -32,26 +38,20 @@ class HabitCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var counterLabel: UILabel = {
+    private let counterLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.casualTextSize.rawValue)
         label.textColor = .lightGray
-        label.text = "Счетчик: \(String(store.habits[rightIndex].trackDates.count))"
       
         return label
     }()
-    
-    //TO-DO TOMMOROW - BUTTONS FRAME IS CHANGE, IMAGE
-    private lazy var checkButton: UIButton = {
-       let button = UIButton()
-        button.setImage(UIImage(systemName: "circle"), for: .normal)
+
+   lazy var checkButton: UIButton = {
+        let button = UIButton()
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.imageView?.contentMode = .scaleAspectFill
-        button.tintColor = store.habits[rightIndex].color
-        button.addTarget(self, action: #selector(changeCheck), for: .touchDown)
-        
-        
+       
         return button
     }()
     
@@ -71,10 +71,10 @@ class HabitCollectionViewCell: UICollectionViewCell {
     //MARK: - Setup Hierarchy
     
     private func setupHierarchy() {
+        contentView.addSubview(checkButton)
         contentView.addSubview(habitLabel)
         contentView.addSubview(timeLabel)
         contentView.addSubview(counterLabel)
-        contentView.addSubview(checkButton)
     }
     
     //MARK: - Setup Layout
@@ -99,17 +99,18 @@ class HabitCollectionViewCell: UICollectionViewCell {
         checkButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
         checkButton.widthAnchor.constraint(equalToConstant: 45).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
     }
     
     //MARK: - Button Action
     
     @objc func changeCheck() {
-        if store.habits[rightIndex].isAlreadyTakenToday == false {
-            store.track(store.habits[rightIndex])
-            checkButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-            (superview as? UICollectionView)?.reloadData()
+        delegate?.didTapButton()
+        if store.habits[cellIndex].isAlreadyTakenToday == false {
+            store.track(store.habits[cellIndex])
         }
+        
+        checkButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+        
     }
     
     //MARK: - Setup Date
@@ -117,13 +118,16 @@ class HabitCollectionViewCell: UICollectionViewCell {
     public func setupCell(with index: Int) {
         habitLabel.text = store.habits[index].name
         habitLabel.textColor = store.habits[index].color
-        timeLabel.text = "Каждый день в \(formatter(with: store.habits[rightIndex].date))"
+        timeLabel.text = "Каждый день в \(formatter(with: store.habits[index].date))"
         checkButton.tintColor = store.habits[index].color
-        if store.habits[index].isAlreadyTakenToday == false {
-            store.track(store.habits[index])
+        if store.habits[index].isAlreadyTakenToday == true {
             checkButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-            (superview as? UICollectionView)?.reloadData()
+        } else {
+            checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
         }
         
+        counterLabel.text = "Счетчик: \(String(store.habits[index].trackDates.count))"
+
+        checkButton.addTarget(self, action: #selector(changeCheck), for: .touchUpInside)
     }
 }
