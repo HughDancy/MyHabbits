@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D82E2744296D36EE006A62E9 /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E2743296D36EE006A62E9 /* ProgressCollectionViewCell.swift */; };
+		D82E2746296D36FD006A62E9 /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E2745296D36FD006A62E9 /* HabitCollectionViewCell.swift */; };
+		D8693A7D296BFCF2002AA0DE /* HabitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8693A7C296BFCF2002AA0DE /* HabitConstants.swift */; };
+		D8693A7F296FF24A002AA0DE /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8693A7E296FF24A002AA0DE /* HabitDetailView.swift */; };
 		D8FBCCA329667E8A00E2BDDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCA229667E8A00E2BDDE /* AppDelegate.swift */; };
 		D8FBCCA529667E8A00E2BDDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCA429667E8A00E2BDDE /* SceneDelegate.swift */; };
-		D8FBCCA729667E8A00E2BDDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCA629667E8A00E2BDDE /* ViewController.swift */; };
-		D8FBCCAA29667E8A00E2BDDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FBCCA829667E8A00E2BDDE /* Main.storyboard */; };
 		D8FBCCAC29667E8C00E2BDDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8FBCCAB29667E8C00E2BDDE /* Assets.xcassets */; };
 		D8FBCCAF29667E8C00E2BDDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FBCCAD29667E8C00E2BDDE /* LaunchScreen.storyboard */; };
+		D8FBCCB729667F1D00E2BDDE /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCB629667F1D00E2BDDE /* HabitsStore.swift */; };
+		D8FBCCB92966835C00E2BDDE /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCB82966835C00E2BDDE /* InformationViewController.swift */; };
+		D8FBCCBB2966857100E2BDDE /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCBA2966857100E2BDDE /* HabitsViewController.swift */; };
+		D8FBCCBD29668F9300E2BDDE /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FBCCBC29668F9300E2BDDE /* HabitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D82E2743296D36EE006A62E9 /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
+		D82E2745296D36FD006A62E9 /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8693A7C296BFCF2002AA0DE /* HabitConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitConstants.swift; sourceTree = "<group>"; };
+		D8693A7E296FF24A002AA0DE /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		D8FBCC9F29667E8A00E2BDDE /* MyHabbits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabbits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FBCCA229667E8A00E2BDDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8FBCCA429667E8A00E2BDDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D8FBCCA629667E8A00E2BDDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D8FBCCA929667E8A00E2BDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8FBCCAB29667E8C00E2BDDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8FBCCAE29667E8C00E2BDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8FBCCB029667E8C00E2BDDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8FBCCB629667F1D00E2BDDE /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
+		D8FBCCB82966835C00E2BDDE /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		D8FBCCBA2966857100E2BDDE /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
+		D8FBCCBC29668F9300E2BDDE /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D82E2742296D36C5006A62E9 /* CustomCollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				D82E2743296D36EE006A62E9 /* ProgressCollectionViewCell.swift */,
+				D82E2745296D36FD006A62E9 /* HabitCollectionViewCell.swift */,
+			);
+			path = CustomCollectionViewCells;
+			sourceTree = "<group>";
+		};
 		D8FBCC9629667E8A00E2BDDE = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +77,18 @@
 		D8FBCCA129667E8A00E2BDDE /* MyHabbits */ = {
 			isa = PBXGroup;
 			children = (
+				D82E2742296D36C5006A62E9 /* CustomCollectionViewCells */,
 				D8FBCCA229667E8A00E2BDDE /* AppDelegate.swift */,
 				D8FBCCA429667E8A00E2BDDE /* SceneDelegate.swift */,
-				D8FBCCA629667E8A00E2BDDE /* ViewController.swift */,
-				D8FBCCA829667E8A00E2BDDE /* Main.storyboard */,
 				D8FBCCAB29667E8C00E2BDDE /* Assets.xcassets */,
 				D8FBCCAD29667E8C00E2BDDE /* LaunchScreen.storyboard */,
 				D8FBCCB029667E8C00E2BDDE /* Info.plist */,
+				D8FBCCB629667F1D00E2BDDE /* HabitsStore.swift */,
+				D8FBCCB82966835C00E2BDDE /* InformationViewController.swift */,
+				D8FBCCBA2966857100E2BDDE /* HabitsViewController.swift */,
+				D8FBCCBC29668F9300E2BDDE /* HabitViewController.swift */,
+				D8693A7C296BFCF2002AA0DE /* HabitConstants.swift */,
+				D8693A7E296FF24A002AA0DE /* HabitDetailView.swift */,
 			);
 			path = MyHabbits;
 			sourceTree = "<group>";
@@ -127,7 +153,6 @@
 			files = (
 				D8FBCCAF29667E8C00E2BDDE /* LaunchScreen.storyboard in Resources */,
 				D8FBCCAC29667E8C00E2BDDE /* Assets.xcassets in Resources */,
-				D8FBCCAA29667E8A00E2BDDE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +163,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8FBCCA729667E8A00E2BDDE /* ViewController.swift in Sources */,
+				D8FBCCB729667F1D00E2BDDE /* HabitsStore.swift in Sources */,
+				D8FBCCBD29668F9300E2BDDE /* HabitViewController.swift in Sources */,
+				D82E2746296D36FD006A62E9 /* HabitCollectionViewCell.swift in Sources */,
+				D8693A7D296BFCF2002AA0DE /* HabitConstants.swift in Sources */,
+				D8FBCCBB2966857100E2BDDE /* HabitsViewController.swift in Sources */,
 				D8FBCCA329667E8A00E2BDDE /* AppDelegate.swift in Sources */,
+				D8693A7F296FF24A002AA0DE /* HabitDetailView.swift in Sources */,
 				D8FBCCA529667E8A00E2BDDE /* SceneDelegate.swift in Sources */,
+				D82E2744296D36EE006A62E9 /* ProgressCollectionViewCell.swift in Sources */,
+				D8FBCCB92966835C00E2BDDE /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D8FBCCA829667E8A00E2BDDE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D8FBCCA929667E8A00E2BDDE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D8FBCCAD29667E8C00E2BDDE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +316,6 @@
 				INFOPLIST_FILE = MyHabbits/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +343,6 @@
 				INFOPLIST_FILE = MyHabbits/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
