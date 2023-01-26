@@ -14,10 +14,6 @@ protocol BackToRoot {
 
 let store = HabitsStore.shared
 
-//var rightIndex = 0
-
-//let detailsDay = 1
-
 enum HabitFontSize: CGFloat {
     case headlineSize = 16
     case casualTextSize = 15

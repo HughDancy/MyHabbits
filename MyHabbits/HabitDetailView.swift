@@ -109,13 +109,11 @@ extension HabitDetailView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         
-        let index = indexPath.row 
-        content.text = store.trackDateString(forIndex: index)
+        content.text = store.trackDateString(forIndex: indexPath.row)
         cell.contentConfiguration = content
-        
         cell.selectionStyle = .none
         
-        if store.habit(store.habits[index], isTrackedIn: store.dates[index]) {
+        if store.habit(store.habits[detailIndex], isTrackedIn: store.dates[indexPath.row]) {
             cell.accessoryType = .checkmark
             cell.tintColor = .purple
         }

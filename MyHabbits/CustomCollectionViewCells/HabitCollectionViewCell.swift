@@ -82,7 +82,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     private func setupLayout() {
         
         habitLabel.translatesAutoresizingMaskIntoConstraints = false
-        habitLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        habitLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
         habitLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +90,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         timeLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         
         counterLabel.translatesAutoresizingMaskIntoConstraints = false
-        counterLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 40).isActive = true
+        counterLabel.topAnchor.constraint(equalTo: checkButton.bottomAnchor, constant: 20).isActive = true
         counterLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         counterLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
         
@@ -100,6 +100,13 @@ class HabitCollectionViewCell: UICollectionViewCell {
         checkButton.widthAnchor.constraint(equalToConstant: 45).isActive = true
         checkButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
+    
+    override func layoutSubviews() {
+           super.layoutSubviews()
+           if !(__CGSizeEqualToSize(bounds.size,self.intrinsicContentSize)){
+               self.invalidateIntrinsicContentSize()
+           }
+       }
     
     //MARK: - Button Action
     

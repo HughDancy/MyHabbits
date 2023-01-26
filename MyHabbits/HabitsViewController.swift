@@ -102,28 +102,30 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
         if indexPath.section == 0 {
             let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: "progressCell", for: indexPath) as! ProgressCollectionViewCell
             cell.setupData()
-            cell.layer.cornerRadius = cell.frame.width / 30
+            cell.layer.cornerRadius = cell.frame.width / 50
             cell.clipsToBounds = true
             
             return cell
         } else {
             let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: "habitCell", for: indexPath) as! HabitCollectionViewCell
-            cell.layer.cornerRadius = cell.frame.width / 30
+            cell.layer.cornerRadius = cell.frame.width / 40
             cell.cellIndex = indexPath.row
             cell.setupCell(with: indexPath.row)
             
             cell.delegate = self
             cell.clipsToBounds = true
+            cell.layoutIfNeeded()
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let wh = habitCollectionView.bounds.size.width / 5
-        let whB = habitCollectionView.bounds.size.height / 4
-        
-        return indexPath.section == 0 ? CGSize(width: habitCollectionView.bounds.size.width - 20, height: wh) : CGSize(width: habitCollectionView.bounds.size.width - 20, height: whB)
+        if UIScreen.main.bounds.size.height < 1180 {
+            return indexPath.section == 0 ? CGSize(width: habitCollectionView.bounds.size.width - 20, height: 80) : CGSize(width: habitCollectionView.bounds.width - 20, height: habitCollectionView.frame.height / 3.5)
+        } else {
+            return indexPath.section == 0 ? CGSize(width: habitCollectionView.bounds.size.width - 20, height: 80) : CGSize(width: habitCollectionView.bounds.width - 20, height: habitCollectionView.frame.height / 6)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

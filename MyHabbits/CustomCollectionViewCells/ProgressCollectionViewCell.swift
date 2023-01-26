@@ -72,18 +72,17 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     private func setupLayout() {
         
         youDoItLabel.translatesAutoresizingMaskIntoConstraints = false
-        youDoItLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
+        youDoItLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         youDoItLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         
         procentLabel.translatesAutoresizingMaskIntoConstraints = false
-        procentLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
+        procentLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         procentLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         
         progressLine.translatesAutoresizingMaskIntoConstraints = false
-        progressLine.topAnchor.constraint(equalTo: youDoItLabel.bottomAnchor, constant: 15).isActive = true
+        progressLine.topAnchor.constraint(equalTo: youDoItLabel.bottomAnchor, constant: 20).isActive = true
         progressLine.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         progressLine.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-        progressLine.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
 
     }
 }
