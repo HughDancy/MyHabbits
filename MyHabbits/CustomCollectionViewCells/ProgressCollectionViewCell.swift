@@ -11,14 +11,12 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     
    public let reuseId = "progressCell"
     
-    //MARK: - Subview's
-    
+    // MARK: - Subview's
     private let youDoItLabel: UILabel = {
         let label = UILabel()
         label.text = "Все получится!"
         label.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.casualTextSize.rawValue)
         label.textColor = .systemGray
-        
         return label
     }()
     
@@ -26,7 +24,6 @@ class ProgressCollectionViewCell: UICollectionViewCell {
        let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.casualTextSize.rawValue)
         label.textColor = .systemGray
-        
         return label
     }()
     
@@ -35,12 +32,10 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         progressLine.tintColor = .lightGray
         progressLine.progressTintColor = .purple
         progressLine.layer.cornerRadius = 4
-        
         return progressLine
     }()
     
-    //MARK: - Init
-    
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: .zero)
         contentView.backgroundColor = .white
@@ -52,25 +47,21 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup data
-    
+    // MARK: - Setup data
     func setupData() {
         procentLabel.text = String(format: "%.0f%%", store.todayProgress * 100)
         progressLine.progress = store.todayProgress
     }
     
-    //MARK: - Setup Hierarchy
-    
+    // MARK: - Setup Hierarchy
     private func setupHierarchy() {
         contentView.addSubview(youDoItLabel)
         contentView.addSubview(procentLabel)
         contentView.addSubview(progressLine)
     }
     
-    //MARK: - Setup Layout
-    
+    // MARK: - Setup Layout
     private func setupLayout() {
-        
         youDoItLabel.translatesAutoresizingMaskIntoConstraints = false
         youDoItLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         youDoItLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
@@ -83,6 +74,5 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         progressLine.topAnchor.constraint(equalTo: youDoItLabel.bottomAnchor, constant: 20).isActive = true
         progressLine.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         progressLine.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-
     }
 }

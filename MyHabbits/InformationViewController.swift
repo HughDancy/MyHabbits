@@ -8,33 +8,38 @@
 import UIKit
 
 class InformationViewController: UIViewController {
-    
-    //MARK: - Subview's
-    
+    // MARK: - Subview's
     private lazy var headingTitle: UILabel = {
-       let title = UILabel()
+        let title = UILabel()
         title.text = infoTitle
         title.font = UIFont(name: "HelveticaNeue-Bold", size: HabitFontSize.infoTitleSize.rawValue)
         title.textColor = .black
-        
         return title
     }()
-    
+
     private lazy var infoTextView: UITextView = {
-       let textView = UITextView()
+        let textView = UITextView()
         textView.textColor = .black
         textView.font = UIFont(name: "HelveticaNeue", size: HabitFontSize.headlineSize.rawValue)
         textView.text = infoText
         textView.showsVerticalScrollIndicator = false
-        
+
         return textView
     }()
-    
-    //MARK: - Lifecycle
-    
+
+    // MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.setupNavigationAppearance()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupView()
+    }
+
+    // MARK: - Setup Navigation appearance
+    private func setupNavigationAppearance() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .systemGray6
@@ -42,29 +47,26 @@ class InformationViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Setup View
+    private func setupView() {
         view.backgroundColor = .white
         title = "Информация"
         setupHierarchy()
         setupLayout()
     }
-    
-    //MARK: - Setup Hierarchy
-    
+
+    // MARK: - Setup Hierarchy
     private func setupHierarchy() {
         view.addSubview(headingTitle)
         view.addSubview(infoTextView)
     }
 
-    //MARK: - Setup Layout
-    
+    // MARK: - Setup Layout
     private func setupLayout() {
-        
         headingTitle.translatesAutoresizingMaskIntoConstraints = false
         headingTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         headingTitle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        
+
         infoTextView.translatesAutoresizingMaskIntoConstraints = false
         infoTextView.topAnchor.constraint(equalTo: headingTitle.bottomAnchor, constant: 15).isActive = true
         infoTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
